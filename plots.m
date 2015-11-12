@@ -16,10 +16,21 @@
 ## Author: Jeremy Burton
 ## Created: 2015-11-10
 
-function [arcsec] = rads2arcsec (radians)
+clf();
 
-  degrees = (radians ./ pi) .* 180;
-  
-  arcsec = degrees .* 3600; %% Where 3600 is the number of arcsecs in a degree
-  
-endfunction
+x = 0.1:0.5:10;
+
+I0 = 1;
+z = I0*(2*besselj(1,x)./x).^2;
+
+theta = 0:pi/8:2*pi;
+
+xx = bsxfun(@times,x',cos(theta));
+yy = bsxfun(@times,x',sin(theta));
+zz = repmat(z',1,length(theta));
+
+subplot(1,2,1);
+plot(x,z);
+
+subplot(1,2,2);
+surf(xx,yy,zz)

@@ -1,4 +1,4 @@
-## Copyright (C) 2015 burtonjg
+## Copyright (C) 2015 Jeremy Burton
 ## 
 ## This program is free software; you can redistribute it and/or modify it
 ## under the terms of the GNU General Public License as published by
@@ -13,13 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-## -*- texinfo -*- 
-## @deftypefn {Function File} {@var{retval} =} airy_disk (@var{input1}, @var{input2})
-##
-## @seealso{}
-## @end deftypefn
-
-## Author: burtonjg <burtonjg@BHQYSW1>
+## Author: Jeremy Burton
 ## Created: 2015-11-10
 
 function [radius_angle] = airy_disk (lambda, aperture)
