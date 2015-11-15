@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{geometry}
+\geometry{letterpaper}
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{epstopdf}
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\begin{document}
+
+\title{Seeing and Critical Focus}
+\author{Jeremy Burton}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+
+\maketitle
+\newpage
+
+\begin{abstract}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+While attempting to perform imaging at a sub-arcsecond per pixel resolution under less than optimal seeing the author experienced some significant issues in trying to achieve critical focus.  Under these conditions focus moves that were above the typically computed critical focus zone (CFZ) size did not appear to have any impact on the FWHM of the observed candiate stars.
+
+This lead to a post session analysis of the issues experienced and the causes and effects of the observed behavior.  
+
+This paper takes a critical look at seeing and the effect of telescope resolution with an emphasis on the impacts for imaging.
+
+\end{abstract}
+\newpage
+
+\section{Diffraction Limited Optics}
+
+We will begin by looking at the theoretical basis for diffraction limited optics.  From there we will lookat the impact this has on the key sampling parameter of interest to astrophotographers.  Name, how this relates to image scale measured in arc-seconds per pixel and the corresponding size of the stars.
+
+\subsection{The Airy Disk}
+
+The study of the nature of the in-focus diffraction pettern of a star was first studied by Professior Goerge Biddell Airy of Trinity College,University of Cambridge.   His work was first read at the November 24\textsuperscript{th}, 1834 meeting of the Cambridge Philosophical Society.
+\paragraph{}
+The intensity of the Airy diffraction rings are given by the following formula:
+
+\begin{equation}
+I(\theta) = I_{0}\left(\frac{2J_{1}(kasin\theta)}{kasin(\theta)}\right)^{2} = I_{0}\left(\frac{2J_{1}(x)}{x}\right)^{2}
+\end{equation}
+
+\paragraph{}
+where 
+
+$x = kasin\theta$
+
+$I_{0}$ is the maximum intensity of the disk 
+
+$J_{1}$ is the Bessel function of the first kind of order 1
+\paragraph{}
+Further:
+
+
+$k=\frac{2\pi}{\lambda}$
+
+$a=$radius of the aperture
+
+$\theta$ is the angle from the centerline to the point the intensity is measured
+\paragraph{}
+This is a complex function to understand and a picture will tell a thousand words. Figure ~\ref{fig:airyplots} shows the plot of the diffraction pattern intensity in both 2-D and 3-D.
+\paragraph{}
+
+The value of $I(\theta)$ will be zero when the value of $J_{1}(x) = 0$.  It can be seen that the first root appears at $x\approx3.83$.
+\paragraph{}
+Thus:
+
+$x = kasin\theta \approx 3.83$
+\\
+
+$sin\theta\approx\frac{3.83}{ka}=\frac{3.83\lambda}{2\pi a}$
+
+\paragraph{}
+\begin{equation}
+sin\theta = 1.22\frac{\lambda}{d}
+\end{equation}
+
+
+This is the more usual form of the expression for the Airy disk.  It also forms the basis for a number of the expressions for the limits of resolution of a telescope.
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=5.5in, height=4in ]{airy_bessel.eps}
+		\caption{2-D and 3-D plot of Airy Disk Intensity}
+		\label{fig:airyplots}
+	\end{center}
+\end{figure}
+
+\subsection{Effect of aperture on resolution}
+
+It can be readily seen that the angular size of the Airy disk is a function of the wavelength of the light and the aperture of the scope only.  For visual use it is common to take the wavelength of yellow light as the reference, since yellow light is is where the eye is most sensitive.  This is likely an evolutionary link to the predominant color of the sun.  The wavelength is given as 550 nM, or $550\times 10^{-9}$ M 
+
+\paragraph{}
+Again the effect if this relationship is best understood when visualized:
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[width=5.5in, height=4in ]{resolution.eps}
+		\caption{Angular Resolution}
+		\label{fig:resolution}
+	\end{center}
+\end{figure}
+
+What is perhaps surprising is the dramatic increase in resolution going from a 50mm aperture to a 100mm aperture. The improvements from 100mm to 200mm and 300mm apertures are not nearly so apparent.  Indeed, beyond about 400mm the improvements in angular resolution become very slight indeed.
+
+This might then provide some indication of why refractor telescopes of around 120mm aperture are seen as ideal instruments for visual observation of stellar objects.  At this point most of the benefits of improved angular have been realized and we rapidly approach limits imposed by atmospheric seeing.
+
+Diffuse objects such as galaxies and nebulae are not constrained by angular resolution but by the raw light gathering power of the instrument.  Thus for those classes of objects befits will continue to be realized with increased aperture.   
+
+
+
+
+
+\section{The effects of Seeing}
+
+\subsection{Changes in the Critical Focus Zone}
+
+\subsection{Critical Focus Zone for various systems}
+
+
+\end{document}

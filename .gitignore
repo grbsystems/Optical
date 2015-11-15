@@ -1,0 +1,5 @@
+
+*.aux
+*.log
+*.gz
+*-converted-to.pdf
