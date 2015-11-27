@@ -16,33 +16,10 @@
 % Author: Jeremy Burton
 % Created: 2015-11-10
 
-x = 0.1:0.2:10;
-
-I0 = 1;
-z = I0*(2*besselj(1,x)./x).^2;
-
-theta = 0:pi/10:2*pi;
-
-xx = bsxfun(@times,x',cos(theta));
-yy = bsxfun(@times,x',sin(theta));
-zz = repmat(z',1,length(theta));
-
-f = figure();
-f.Position=[100 100 1000 800];
-
-subplot(1,2,1);
-plot(r, I);
-ylabel('intensity')
-xlabel('arcseconds')
-
-
-subplot(1,2,2);
-surf(xx,yy,zz);
-zlabel('intensity')
-xlabel('arcseconds')
-ylabel('arcseconds')
-colormap summer
-
-print -depsc airy_bessel.eps;
-
-close();
+function [fwhm] = fwhm_gauss(x, mu, sigma)
+    a=1/(sigma * sqrt(2*pi));
+    b=mu;
+    c=sigma;
+    
+    fwhm = a .* exp( -((x-b).^2) ./ (2*c^2) );
+end

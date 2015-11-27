@@ -16,33 +16,28 @@
 % Author: Jeremy Burton
 % Created: 2015-11-10
 
-x = 0.1:0.2:10;
-
-I0 = 1;
-z = I0*(2*besselj(1,x)./x).^2;
-
-theta = 0:pi/10:2*pi;
-
-xx = bsxfun(@times,x',cos(theta));
-yy = bsxfun(@times,x',sin(theta));
-zz = repmat(z',1,length(theta));
-
-f = figure();
-f.Position=[100 100 1000 800];
-
-subplot(1,2,1);
-plot(r, I);
-ylabel('intensity')
-xlabel('arcseconds')
-
-
-subplot(1,2,2);
-surf(xx,yy,zz);
-zlabel('intensity')
-xlabel('arcseconds')
-ylabel('arcseconds')
-colormap summer
-
-print -depsc airy_bessel.eps;
-
-close();
+function plot_fwhm(fname)
+    
+    x=-5:0.1:5;
+    
+    plot(x,fwhm_gauss(x, 0, .67));
+    hold on;
+    plot(x,fwhm_gauss(x, 0, 1.5));
+    
+    x=[-5 5];
+    y=[0.3 0.3];
+    plot(x,y);
+    
+    y=[0.266/2 0.266/2];
+    plot(x,y);
+    
+    title('Hypothetical stellar profiles');
+    xlabel('Pixels from center of star');
+    ylabel('Pixel relative intensity');
+    
+    legend('Good Seeing', 'Poor seeing', 'HM Good Seeing', 'HM Bad Seeing');
+    
+    hold off;
+    
+    print(fname, '-depsc');
+end

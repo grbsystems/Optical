@@ -1,3 +1,4 @@
+
 % Copyright (C) 2015 Jeremy Burton
 % 
 % This program is free software; you can redistribute it and/or modify it
@@ -16,33 +17,15 @@
 % Author: Jeremy Burton
 % Created: 2015-11-10
 
-x = 0.1:0.2:10;
+clf();
 
-I0 = 1;
-z = I0*(2*besselj(1,x)./x).^2;
+fratio = 1:0.1:10;
+lam=550e-9;
 
-theta = 0:pi/10:2*pi;
+cfz=critical_focus(lam, fratio) .* 1e6;  % Convert to microns
 
-xx = bsxfun(@times,x',cos(theta));
-yy = bsxfun(@times,x',sin(theta));
-zz = repmat(z',1,length(theta));
+plot(fratio, cfz);
+xlabel('Focal Ratio');
+ylabel('CFZ Microns');
+title('CFZ for various focal ratios');
 
-f = figure();
-f.Position=[100 100 1000 800];
-
-subplot(1,2,1);
-plot(r, I);
-ylabel('intensity')
-xlabel('arcseconds')
-
-
-subplot(1,2,2);
-surf(xx,yy,zz);
-zlabel('intensity')
-xlabel('arcseconds')
-ylabel('arcseconds')
-colormap summer
-
-print -depsc airy_bessel.eps;
-
-close();

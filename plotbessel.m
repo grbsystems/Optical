@@ -16,33 +16,24 @@
 % Author: Jeremy Burton
 % Created: 2015-11-10
 
-x = 0.1:0.2:10;
+r = 0:0.25:10;
 
-I0 = 1;
-z = I0*(2*besselj(1,x)./x).^2;
+b1 = besselj(1,r);
+plot(r,b);
+hold on;
+ax=gca;
 
-theta = 0:pi/10:2*pi;
+b2 = besselj(2,r);
+plot(r,b2);
 
-xx = bsxfun(@times,x',cos(theta));
-yy = bsxfun(@times,x',sin(theta));
-zz = repmat(z',1,length(theta));
+b3 = besselj(3,r);
+plot(r,b3);
 
-f = figure();
-f.Position=[100 100 1000 800];
+plot(r, r.* 0);
+legend('Order 1', 'Order 2', 'Order 3');
 
-subplot(1,2,1);
-plot(r, I);
-ylabel('intensity')
-xlabel('arcseconds')
+title('Bessel functions of order 1, 2 and 3');
 
+print('bessel-funcs', '-depsc');
 
-subplot(1,2,2);
-surf(xx,yy,zz);
-zlabel('intensity')
-xlabel('arcseconds')
-ylabel('arcseconds')
-colormap summer
-
-print -depsc airy_bessel.eps;
-
-close();
+hold off;
