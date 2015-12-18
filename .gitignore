@@ -3,3 +3,5 @@
 *.log
 *.gz
 *-converted-to.pdf
+*.toc
+

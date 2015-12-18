@@ -16,7 +16,10 @@
 % Author: Jeremy Burton
 % Created: 2015-11-10
 
-function [fwhm] = fwhm_gauss(x, mu, sigma)
-    a=1/(sigma * sqrt(2*pi)
-    fwhm = a .* exp( -((x-b).^2) ./ (2*c^2) );
+function [rads] = arcsec2rads (arcsec)
+
+  degrees = arcsec ./ 3600;
+  
+  rads = (degrees ./ 180) .* pi;
+  
 end

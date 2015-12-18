@@ -1,3 +1,4 @@
+
 % Copyright (C) 2015 Jeremy Burton
 % 
 % This program is free software; you can redistribute it and/or modify it
@@ -16,26 +17,36 @@
 % Author: Jeremy Burton
 % Created: 2015-11-10
 
-function plot_fwhm(fname)
-    
-    x=-5:0.1:5;
-    
-    plot(x,fwhm_gauss(x, 0, .67));
-    hold on;
-    plot(x,fwhm_gauss(x, 0, 1.33));
-    
-    x=[-5 5];
-    y=[0.3 0.3]
-    plot(x,y);
-    
-    y=[0.3 0.3]
-    plot(x,y);
-    
-    title('Hypothetical fwhm');
-    xlabel('Pixels from center of star');
-    ylabel('Pixel relative intensity');
-    
-    legend('Good Seeing', 'Poor seeing');
-    
-    hold off;
-end
+clf();
+
+fratio = 8;
+lam=550e-9;
+fl=.5:.05:3;
+
+fwhm = 4;
+cfz=cfz_fwhm (lam, fratio, fl, fwhm) .* 1e6;  % Convert to microns
+
+plot(fl.*1000, cfz);
+xlabel('Focal Length (mm)');
+ylabel('CFZ Microns');
+title('CFZ for various focal lengths and seeing');
+
+hold on
+
+fwhm = 3;
+cfz=cfz_fwhm (lam, fratio, fl, fwhm) .* 1e6;  % Convert to microns
+plot(fl.*1000, cfz);
+
+fwhm = 2;
+cfz=cfz_fwhm (lam, fratio, fl, fwhm) .* 1e6;  % Convert to microns
+plot(fl.*1000, cfz);
+
+fwhm = 1;
+cfz=cfz_fwhm (lam, fratio, fl, fwhm) .* 1e6;  % Convert to microns
+plot(fl.*1000, cfz);
+
+legend('4 arcseconds','3 arcseconds','2 arcseconds','1 arcsecond')
+hold off
+
+print('cfz-seeing', '-depsc');
+

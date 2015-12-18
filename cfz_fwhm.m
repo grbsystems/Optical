@@ -16,21 +16,12 @@
 % Author: Jeremy Burton
 % Created: 2015-11-10
 
-r = 0:0.25:10;
-
-b1 = besselj(1,r);
-plot(r,b);
-hold on;
-ax=gca;
-
-b2 = besselj(2,r);
-plot(r,b2);
-
-b3 = besselj(3,r);
-plot(r,b3);
-
-plot(r, r.* 0);
-
-title('Bessel function');
-
-hold off;
+function [cfz] = cfz_fwhm (lambda, fr, fl, fwhm)
+    cfz_limit = 4.88 * lambda * fr^2;
+    
+    fwhm_rads = arcsec2rads(fwhm);
+    
+    cfz_real = (2 * fwhm_rads * fr) .* fl;
+    
+    cfz = max(cfz_real, cfz_limit);
+end

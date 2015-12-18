@@ -94,7 +94,7 @@ $x = kasin\theta$
 $I_{0}$ \large is the maximum intensity of the disk 
 \Large
 
-$J_{1}$ \large is the Bessel function of the first kind of order 1\footnote{See Appendix A}
+$J_{1}$ \large is the Bessel function of the first kind of order 1
 
 
 Further:
@@ -106,7 +106,8 @@ $a=$\large radius of the aperture
 
 $\theta$ is the angle from the centerline to the point the intensity is measured.
 
-This is a complex function to understand and a picture will tell a thousand words. Figure ~\ref{fig:airyplots} shows the plot of the diffraction pattern intensity in both 2-D and 3-D.
+Figure ~\ref{fig:airyplots} shows the plot of the diffraction pattern intensity in both two and three dimensions.
+
 
 The value of $I(\theta)$ will be zero when the value of $J_{1}(x) = 0$.  It can be seen that the first root appears at $x\approx3.83$.
 
@@ -134,12 +135,37 @@ This is the more usual form of the expression for the Airy disk, where d is the 
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[scale=0.8]{airy_bessel.eps}
+		\includegraphics[scale=0.8]{./images/airy_bessel.eps}
 		\caption{Airy Disk Intensity for 200 mm unobstructed telescope}
 		\label{fig:airyplots}
 	\end{center}
 \end{figure}
 \newpage
+
+\subsection{The effect of a central obstruction}
+
+The effect of adding a central obstruction of the instrument is described by a modification to eqn~\ref{eqn:bessel-1} as follows:
+
+\begin{equation}
+I(\theta) =  \frac{I_{0}}{\left( 1-\epsilon^2 \right) ^2}     
+\left(
+\frac{2J_{1}(x)}{x} - \frac{2\epsilon J_{1}(\epsilon x)}{x}
+\right)^{2}
+\end{equation}
+
+where $\epsilon$ is the fractional size of the obstruction.  For a typical amateur 200mm RCOS scope this value is about 0.40.  
+
+If we compare figure~\ref{fig:airyplots} to figure~\ref{fig:obstructed-airy} we can see that the effect of the obstruction is make the central diffraction peak sharper at the cost of making the first diffraction ring more intense.  This has the effect of lowering the contrast between two adjacent stars.  
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=0.7]{./images/obstructed-airy.eps}
+		\caption{Obstructed Airy Diffraction Pattern}
+		\label{fig:obstructed-airy}
+	\end{center}
+\end{figure}
+
+
 
 \subsection{Effect of aperture on resolution}
 
@@ -148,7 +174,7 @@ It can be readily seen that the angular size of the Airy disk is a function of t
 \bigskip
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[scale=0.7]{resolution.eps}
+		\includegraphics[scale=0.7]{./images/resolution.eps}
 		\caption{Angular Resolution}
 		\label{fig:resolution}
 	\end{center}
@@ -164,24 +190,24 @@ Diffuse objects such as galaxies and nebulae are not constrained by angular reso
 \subsection{Spot Size}
 So far we have dealt with the size of the Airy disk purely in angular terms.  However, when dealing with imaging the physical size of the spot as it appears on the sensor is key.  The physical size of the spot may be calculated from the geometry of the telescope.  
 
-The Airy disk will appear to be formed at the objective lens of the telescope.  Since we know the angular size of the spot its physical dimensions may be calculated by simple trigonometry. With reference to figure~\ref{fig:spot_geometry}:
+The Airy disk will appear to be formed at the focal point of the telescope. WE may also state that the star may be considered a point source of light.  Since we know the angular size of the spot its physical dimensions may be calculated by simple trigonometry. With reference to figure~\ref{fig:spot_geometry}:
 
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[]{spot_size_figure.eps}
+		\includegraphics[]{./images/spot_size_figure.eps}
 		\caption{Airy Disk Geometry}
 		\label{fig:spot_geometry}
 	\end{center}
 \end{figure}
 
 
-Here $\theta$ is the angle subtended by the radius of the Airy disk, $f_{l}$ is the focal length of the telescope and $r_{s}$ is the radius of the Airy disk.
+Here $\theta$ is the angle subtended by the radius of the Airy disk, $f_{l}$ is the focal length of the telescope and $r_{Airy}$ is the radius of the Airy disk.
 
 The triangle abc is an right angle triangle.  From this, and from the sin rule for triangles we may say that:
 
 \LARGE
-$\frac{sin(\theta)}{r_{s}} = \frac{sin(\lambda)}{f_{l}}$
+$\frac{sin(\theta)}{r_{Airy}} = \frac{sin(\lambda)}{f_{l}}$
 \large
 
 But from the sum of internal angles in a triangle
@@ -189,10 +215,10 @@ But from the sum of internal angles in a triangle
 $\lambda+\theta+90=180 \implies \lambda=90-\theta$
 
 \LARGE
-$\frac{sin(\theta)}{r_{s}} = \frac{sin(90-\theta)}{f_{l}}$
+$\frac{sin(\theta)}{r_{Airy}} = \frac{sin(90-\theta)}{f_{l}}$
 
 \LARGE
-$\frac{sin(\theta)}{r_{s}} = \frac{cos(\theta)}{f_{l}}$
+$\frac{sin(\theta)}{r_{Airy}} = \frac{cos(\theta)}{f_{l}}$
 
 \LARGE
 $r_{s}=\frac{sin(\theta)}{cos(\theta)} f_{l}$
@@ -201,22 +227,25 @@ $r_{s}=\frac{sin(\theta)}{cos(\theta)} f_{l}$
 But for small values of $\theta$, $sin(\theta)\approx\theta$ and $cos(\theta)\approx 1$ thus:
 
 \Large
-$r_{s}=\theta f_{l}$
+\begin{equation}
+\label{eqn:spot-startpoint}
+r_{Airy}=\theta f_{l}
+\end{equation}
 
 \large
 Substituting the value for $\theta$ derived in eqn~\ref{eqn:airy-radius} we find that:
 
 \LARGE
-$r_{s}=\frac{1.22\lambda f_{l}}{d} $
+$r_{Airy}=\frac{1.22\lambda f_{l}}{d} $
 
 \Large
 \begin{equation}
 \label{eqn:spot-diameter}
-r_{s}=1.22\lambda f_{r} \implies d_{s}=2.44\lambda f_{r}
+r_{Airy}=1.22\lambda f_{r} \implies d_{Airy}=2.44\lambda f_{Airy}
 \end{equation}
 
 \large
-Where $f_{r}$ is the focal ratio of the instrument and $d_{s}$ is the spot diameter.
+Where $f_{r}$ is the focal ratio of the instrument and $d_{Airy}$ is the spot diameter.
 
 This is actually quite a surprising result.  The spot size for an optically perfect instrument is governed by the focal ratio of the instrument.  Thus a small refractor with a focal ratio of $f_{r}$ will produce a spot size the same as a large instrument of the same focal ratio.
 
@@ -224,7 +253,7 @@ At first blush this appears to run counter to the notion that larger aperture in
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[scale=0.7]{focal-ratio-resolution.eps}
+		\includegraphics[scale=0.7]{./images/focal-ratio-resolution.eps}
 		\caption{Spot Size and Resolution}
 		\label{fig:spot_resolution}
 	\end{center}
@@ -239,8 +268,8 @@ Now that we have established the spot size we can move on to look at the critica
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[scale=0.7]{CFZ.eps}
-		\caption{Spot Size and Resolution}
+		\includegraphics[scale=0.7]{./images/CFZ.eps}
+		\caption{CFZ Diagram}
 		\label{fig:cfz}
 	\end{center}
 \end{figure}
@@ -261,13 +290,13 @@ To compute the physical size of the CFZ we may decompose the problem into a set 
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[]{CFZ-computation.eps}
-		\caption{Spot Size and Resolution}
+		\includegraphics[]{./images/CFZ-computation.eps}
+		\caption{CFZ Computation}
 		\label{fig:cfz-computation}
 	\end{center}
 \end{figure}
 
-$r_{s}$ is the Airy radius as given by equation~\ref{eqn:airy-radius}
+$r_{Airy}$ is the Airy radius as given by equation~\ref{eqn:airy-radius}
 
 f is half the CFZ
 
@@ -276,10 +305,13 @@ $\zeta$ is half the cone angle, $\zeta = arctan(\frac{1}{2f_{r}})$
 Because $\zeta$ is small:
 
 \Large
-$\zeta \approx \frac{1}{2f_{r}} \approx \frac{r_{s}}{f} \implies f=2r_{s}f_{r}$
+\begin{equation}
+\zeta \approx \frac{1}{2f_{Airy}} \approx \frac{r_{Airy}}{f} \implies f=2r_{Airy}f_{r}
+\label{eqn:physical-spot-size}
+\end{equation}
 \large
 
-Substitute Eqn~\ref{eqn:airy-radius} for $r_{s}$:
+Substitute Eqn~\ref{eqn:airy-radius} for $r_{Airy}$:
 
 $f=2.44\lambda f_{r}^2 \implies$
 
@@ -291,7 +323,7 @@ Thus we may now plot the critical focus zone for yellow light for a range of foc
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[scale=0.7]{cfz-fratio.eps}
+		\includegraphics[scale=0.7]{./images/cfz-fratio.eps}
 		\caption{CFZ against Focal Ratio}
 		\label{fig:cfz-plot}
 	\end{center}
@@ -299,29 +331,7 @@ Thus we may now plot the critical focus zone for yellow light for a range of foc
 
 One thing to observe is the size of the CFZ in comparison to the claimed step size of a number of commercial motorized focusing systems. It may readily be seen that the claimed resolution of many of these devices is far, far smaller than is required to achieve the optimum focus.  
 
-\subsection{The effect of a central obstruction}
-
-The effect of adding a central obstruction of the instrument is described by a modification to eqn~\ref{eqn:bessel-1} as follows:
-
-\begin{equation}
-I(\theta) =  \frac{I_{0}}{\left( 1-\epsilon^2 \right) ^2}     
-\left(
-\frac{2J_{1}(x)}{x} - \frac{2\epsilon J_{1}(\epsilon x)}{x}
-\right)^{2}
-\end{equation}
-
-where $\epsilon$ is the fractional size of the obstruction.  For a typical amateur 200mm RCOS scope this value is about 0.40.  
-
-\begin{figure}[htb]
-	\begin{center}
-		\includegraphics[scale=0.7]{obstructed-airy.eps}
-		\caption{Obstructed Airy Diffraction Pattern}
-		\label{fig:obstructed-airy}
-	\end{center}
-\end{figure}
-
-If we compare figure~\ref{fig:airyplots} to figure~\ref{fig:obstructed-airy} we can see that the effect of the obstruction is make the central diffraction peak sharper at the cost of making the first diffraction ring more intense.  This has the effect of lowering the contrast between two adjacent stars.  
-
+\newpage
 \section{The effects of Seeing and Sampling}
 
 \subsection{What seeing does to diffraction limits}
@@ -336,8 +346,8 @@ This is seen in the shape of the ideal intensity plots for stars for good seeing
 
 \begin{figure}[htb]
 	\begin{center}
-		\includegraphics[scale=0.7]{stellar-profiles.eps}
-		\caption{Stellar Profiles}
+		\includegraphics[scale=0.7]{./images/stellar-profiles.eps}
+		\caption{Stellar Profiles on an Imaging Sensor}
 		\label{fig:stellar-profiles}
 	\end{center}
 \end{figure}
@@ -354,24 +364,56 @@ When seeing is described by astrophotographers as being 2 arcseconds or 4 arcsec
 
 For the purposes of imaging at least it is very rare indeed that the performance of the optical train will be at the diffraction limit.  Rather, the performance will be limited by seeing.
 
-How then does this effect the CFZ?  In this case the smallest possible spot size will not be given by the diffraction limited value derived in equation~\ref{eqn:spot-diameter}, but instead will be limited by the FWHM value.
+How then does this effect the CFZ?  In this case,if the seeing is sufficiently bad, the smallest possible spot size will not be given by the diffraction limited value derived in equation~\ref{eqn:spot-diameter}, but instead will be limited by the FWHM value.
+
+With reference to figure~\ref{fig:spot_geometry} we may rework the equations for the spot size but using the expression $\frac{fwhm}{2}$ for the value of $\theta$ as opposed to the expression for the angular radius of the Airy disk. Thus starting from equation~\ref{eqn:spot-startpoint}:
+
+\Large
+$r_{fwhm}=\frac{fwhm \times f_{l}}{2} $
+\large
+
+It is important to note that the value of $r_{fwhm}$ must be greater or equal to the value $r_{Airy}$.  $r_{fwhm}$ may be computed to be smaller than  $r_{Airy}$ for small values of $f_{l}$ in good seeing with low FWHM.\footnote{Strictly speaking we should in fact use half the FWHM of the Airy disk as the lower limit to be consistent. This value is slightly lower than the value of  $r_{Airy}$. For the sake of simplicity  $r_{Airy}$ is used as it is approximately equivalent for all practical purposes. }
+
+Substituting into equation~\ref{eqn:physical-spot-size} and simplifying we get:
+
+\begin{equation}
+CFZ=2\times fwhm \times f_{l} \times f_{r}
+\end{equation}
+
+Now we see that the CFZ also depends on the focal length, $f_{l}$ of the instrument.  Previously 2 instruments of different size with similar focal ratio produced the same spot size.  
+
+In this real world case however the angular size of the spot that is a constant.  So a longer focal length instrument will produce a larger spot size, and a bigger CFZ.  Thus, all things being equal, in the real world a 16" RCOS at f8 will have a much larger CFZ than the otherwise equivalent 8" instrument, depending on the seeing.
+
+A large CFZ tends to make focusing somewhat mushy , with seemingly absurdly large changes in the focus position having little or no effect on the FWHM of the stars in the image.  This tends to make critical focus harder to find, even though the dead-zone is larger.  
 
 \subsubsection{Critical Focus Zone for various systems}
 
-\newpage
-\begin{appendices}
-	\chapter{Appendix A}
-	
-	The contents...
-	
-	\begin{figure}[htb]
-		\begin{center}
-			\includegraphics[scale=1.0]{bessel-funcs.eps}
-			\caption{Bessel Functions}
-			\label{fig:bessel-funcs}
-		\end{center}
-	\end{figure}
-\end{appendices}
+Since low cost RCOS scope have begun to become popular we will look at a hypothetical system with a focal ratio of f8 and with focal lengths from 800 mm through to 3000 mm. To simplify the mathematics the effect of the obstruction is ignored.
+
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=0.9]{./images/cfz-seeing.eps}
+		\caption{CFZ for various focal lengths and seeing conditions}
+		\label{fig:cfz-seeing}
+	\end{center}
+\end{figure}
+
+Note that the better the seeing, the longer the CFZ will be consistent with the diffraction limit of the optics.  Also note that the longer the focal length, the sooner the CFZ departs from the diffraction limit of the optics.  
+
+\subsection{Seeing and resolution}
+
+Since the CFZ is directly related to the spot size of the star, we can state that longer focal length instruments need more steady skies in order to perform close to their design limits. This generally known rule-of-thumb has its basis in the physics of light.
+
+\section{Conclusion}
+
+Poor seeing is well known to cause issues with high resolution imaging at longer focal lengths.  It has been shown that this is directly related to the effect of the spot size of the star that is in turn governed by the seeing conditions.
+
+Perhaps less well known is that the critical focus zone of the system is also a function of seeing.  Anyone who has struggled to find focus in less than optimal conditions need not blame their skills or  equipment.  
+
+The laws of optics in fact require that focus will be mushy with a large critical focus zone and associated bloated stars when using longer focal length instruments in poor seeing.
+
+In the authors case this study has caused a rethinking of what is practical under the typical Northeastern US skies.  Smaller, shorter focal length instruments are able to perform at their design limits under seeing that renders the benefits of a larger instrument marginal.  The full potential of larger instruments will not be realized.
 
 
 \end{document}
