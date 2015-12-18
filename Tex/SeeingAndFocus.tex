@@ -74,7 +74,9 @@ This paper takes a critical look at seeing and the effect of telescope resolutio
 
 \section{Diffraction Limited Optics}
 
-We will begin by looking at the theoretical basis for diffraction limited optics.  From there we will look at the impact this has on the key sampling parameter of interest to astrophotographers.  Name, how this relates to image scale measured in arc-seconds per pixel and the corresponding size of the stars.
+We will begin by looking at the theoretical basis for diffraction limited optics. From there we will look at how the stellar spot size impacts resolution of the optics and how that is related to fundamental properties such as aperture and focal ratio.
+
+We will then establish the nature of the critical focus zone and finally look at how seeing will effect both resolution and critical focus for a representative instrument.
 
 \subsection{The Airy Disk}
 
@@ -102,12 +104,14 @@ Further:
 \Large
 $k=\frac{2\pi}{\lambda}$
 
+\large
+$\lambda$ is the wavelength of the light being diffracted
+
 $a=$\large radius of the aperture
 
 $\theta$ is the angle from the centerline to the point the intensity is measured.
 
 Figure ~\ref{fig:airyplots} shows the plot of the diffraction pattern intensity in both two and three dimensions.
-
 
 The value of $I(\theta)$ will be zero when the value of $J_{1}(x) = 0$.  It can be seen that the first root appears at $x\approx3.83$.
 
@@ -169,7 +173,9 @@ If we compare figure~\ref{fig:airyplots} to figure~\ref{fig:obstructed-airy} we 
 
 \subsection{Effect of aperture on resolution}
 
-It can be readily seen that the angular size of the Airy disk is a function of the wavelength of the light and the aperture of the scope only.  For visual use it is common to take the wavelength of yellow light as the reference, since yellow light is is where the eye is most sensitive.  This is likely an evolutionary link to the predominant color of the sun.  The wavelength is given as 550 nM, or $550\times 10^{-9}$ M 
+It can be readily seen that the angular size of the Airy disk is a function of the wavelength of the light and the aperture of the scope only.  For visual use it is common to take the wavelength of yellow light as the reference, since yellow light is is where the eye is most sensitive.  The wavelength is given as 550 nM, or $550\times 10^{-9}$ M 
+
+\newpage 
 
 \bigskip
 \begin{figure}[htb]
@@ -182,15 +188,15 @@ It can be readily seen that the angular size of the Airy disk is a function of t
 
 What is perhaps surprising is the dramatic increase in resolution going from a 50mm aperture to a 100mm aperture. The improvements from 100mm to 200mm and 300mm apertures are not nearly so apparent.  Indeed, beyond about 400mm the improvements in angular resolution become very slight indeed.
 
-This might then provide some indication of why refractor telescopes of around 120mm aperture are seen as the optimum instruments for visual observation of stellar objects.  At this point most of the benefits of improved angular have been realized and we at the  limits imposed by atmospheric seeing.
+This might then provide some indication of why refractor telescopes of around 120mm aperture are often touted as the optimum instruments for visual observation of stellar objects.  At this point most of the benefits of improved angular resolution have been realized and the  limits imposed by atmospheric seeing begin to dominate.
 
-Diffuse objects such as galaxies and nebulae are not constrained by angular resolution, but by the raw light gathering power of the instrument.  Thus for those classes of objects befits will continue to be realized with increased aperture.   
+Diffuse objects such as galaxies and nebulae are not constrained by angular resolution, but by the raw light gathering power of the instrument.  Thus for those classes of objects benefits will continue to be realized with increased aperture.   
 
 
 \subsection{Spot Size}
 So far we have dealt with the size of the Airy disk purely in angular terms.  However, when dealing with imaging the physical size of the spot as it appears on the sensor is key.  The physical size of the spot may be calculated from the geometry of the telescope.  
 
-The Airy disk will appear to be formed at the focal point of the telescope. WE may also state that the star may be considered a point source of light.  Since we know the angular size of the spot its physical dimensions may be calculated by simple trigonometry. With reference to figure~\ref{fig:spot_geometry}:
+The Airy disk will appear to be formed at the focal point of the telescope. It may also be stated that the star may be considered a point source of light.  Since the angular size of the spot is known, its physical dimensions may be calculated by simple trigonometry. With reference to figure~\ref{fig:spot_geometry}:
 
 
 \begin{figure}[htb]
@@ -241,7 +247,7 @@ $r_{Airy}=\frac{1.22\lambda f_{l}}{d} $
 \Large
 \begin{equation}
 \label{eqn:spot-diameter}
-r_{Airy}=1.22\lambda f_{r} \implies d_{Airy}=2.44\lambda f_{Airy}
+r_{Airy}=1.22\lambda f_{r} \implies d_{Airy}=2.44\lambda f_{r}
 \end{equation}
 
 \large
@@ -264,7 +270,9 @@ Let the points {\em a} and {\em b} be the centers of 2 Airy disks that are space
 
 \subsection{The zone of critical focus}
 
-Now that we have established the spot size we can move on to look at the critical focus zone (CFZ).  Focus in a telescope is established by moving the plane of the detector back and forth until the point of best focus is reached.  We have established that there is a point at which the spot reaches its minimum diameter.  This is shown in Figure ~\ref{fig:cfz}
+Now that the nature of the spot size has been established the nature of the critical focus zone (CFZ) may be examined.  
+
+Focus in a telescope is established by moving the plane of the detector back and forth until the point of best focus is reached.  There is a point at which the spot reaches its minimum diameter, the Airy disk.  This is shown in Figure~\ref{fig:cfz}
 
 \begin{figure}[htb]
 	\begin{center}
@@ -274,7 +282,7 @@ Now that we have established the spot size we can move on to look at the critica
 	\end{center}
 \end{figure}
 
-Here we see the light cone of the instrument as it extends beyond the zone of focus.  The dashed line at $F_{1}$ indicates size of the out of focus disk on the sensor at point $F_{1}$.  
+Here we see the light cone of the instrument as it extends beyond the zone of focus.  The line at $F_{1}$ indicates size of the out of focus disk on the sensor at point $F_{1}$.  
 
 As $F_{1}$ moves towards $F_{0}$, the theoretical point of convergence of the light cone, the size of the out of focus image will reach the minimum Airy spot size indicated by $A_{s}$.  
 
@@ -306,7 +314,7 @@ Because $\zeta$ is small:
 
 \Large
 \begin{equation}
-\zeta \approx \frac{1}{2f_{Airy}} \approx \frac{r_{Airy}}{f} \implies f=2r_{Airy}f_{r}
+\zeta \approx \frac{1}{2f_{r}} = \frac{r_{Airy}}{f} \implies f=2r_{Airy}f_{r}
 \label{eqn:physical-spot-size}
 \end{equation}
 \large
@@ -330,6 +338,8 @@ Thus we may now plot the critical focus zone for yellow light for a range of foc
 \end{figure}
 
 One thing to observe is the size of the CFZ in comparison to the claimed step size of a number of commercial motorized focusing systems. It may readily be seen that the claimed resolution of many of these devices is far, far smaller than is required to achieve the optimum focus.  
+
+This also demonstrates why depth of field of a camera lens increases as the lens is stopped down.
 
 \newpage
 \section{The effects of Seeing and Sampling}
@@ -380,15 +390,15 @@ Substituting into equation~\ref{eqn:physical-spot-size} and simplifying we get:
 CFZ=2\times fwhm \times f_{l} \times f_{r}
 \end{equation}
 
-Now we see that the CFZ also depends on the focal length, $f_{l}$ of the instrument.  Previously 2 instruments of different size with similar focal ratio produced the same spot size.  
+Now we see that the CFZ also depends on the focal length, $f_{l}$, of the instrument.  Previously 2 instruments of different size with similar focal ratio produced the same spot size.  
 
-In this real world case however the angular size of the spot that is a constant.  So a longer focal length instrument will produce a larger spot size, and a bigger CFZ.  Thus, all things being equal, in the real world a 16" RCOS at f8 will have a much larger CFZ than the otherwise equivalent 8" instrument, depending on the seeing.
+In this real world seeing limited case, the angular size of the spot that is a constant.  So a longer focal length instrument will produce a larger spot size, and a bigger CFZ.  Thus, all things being equal, in the real world a 16" RCOS at f8 will have a much larger CFZ than the otherwise equivalent 8" instrument, depending on the seeing.
 
 A large CFZ tends to make focusing somewhat mushy , with seemingly absurdly large changes in the focus position having little or no effect on the FWHM of the stars in the image.  This tends to make critical focus harder to find, even though the dead-zone is larger.  
 
 \subsubsection{Critical Focus Zone for various systems}
 
-Since low cost RCOS scope have begun to become popular we will look at a hypothetical system with a focal ratio of f8 and with focal lengths from 800 mm through to 3000 mm. To simplify the mathematics the effect of the obstruction is ignored.
+Since low cost RCOS scope have begun to become popular we will look at a hypothetical system with a focal ratio of f8 and with focal lengths from 500 mm through to 3000 mm. To simplify the mathematics the effect of the central obstruction is ignored.
 
 
 \begin{figure}[htb]

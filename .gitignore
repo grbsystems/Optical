@@ -4,4 +4,5 @@
 *.gz
 *-converted-to.pdf
 *.toc
-
+*.asv
+git 

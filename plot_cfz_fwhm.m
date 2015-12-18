@@ -26,7 +26,7 @@ fl=.5:.05:3;
 fwhm = 4;
 cfz=cfz_fwhm (lam, fratio, fl, fwhm) .* 1e6;  % Convert to microns
 
-plot(fl.*1000, cfz);
+plot(fl.*1000, cfz, '-k');
 xlabel('Focal Length (mm)');
 ylabel('CFZ Microns');
 title('CFZ for various focal lengths and seeing');
@@ -35,15 +35,15 @@ hold on
 
 fwhm = 3;
 cfz=cfz_fwhm (lam, fratio, fl, fwhm) .* 1e6;  % Convert to microns
-plot(fl.*1000, cfz);
+plot(fl.*1000, cfz, '--g');
 
 fwhm = 2;
 cfz=cfz_fwhm (lam, fratio, fl, fwhm) .* 1e6;  % Convert to microns
-plot(fl.*1000, cfz);
+plot(fl.*1000, cfz, ':b');
 
 fwhm = 1;
 cfz=cfz_fwhm (lam, fratio, fl, fwhm) .* 1e6;  % Convert to microns
-plot(fl.*1000, cfz);
+plot(fl.*1000, cfz, '.-m');
 
 legend('4 arcseconds','3 arcseconds','2 arcseconds','1 arcsecond')
 hold off

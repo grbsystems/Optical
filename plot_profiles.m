@@ -16,6 +16,31 @@
 % Author: Jeremy Burton
 % Created: 2015-11-10
 
-function [size] = fwhm_angular(lambda, aperture)
-    size = (1.02 * lambda) ./ aperture;
-endfunction
+clf();
+
+x=-5:0.1:5;
+sigma1 = 0.6;
+
+fwhm = fwhm_gauss(x, 0, sigma1);
+plot(x, fwhm, '-b');
+
+hold on;
+
+sigma2 = 2;
+fwhm = fwhm_gauss(x, 0, sigma2);
+plot(x, fwhm, '--b');
+legend('Good Seeing', 'Bad Seeing');
+
+x1 = (2.3548 * sigma1) / 2;
+x=[-x1 x1];
+fwhm = fwhm_gauss(x, 0, sigma1);
+plot(x, fwhm, '-b');
+
+x1 = (2.3548 * sigma2) / 2;
+x=[-x1 x1];
+fwhm = fwhm_gauss(x, 0, sigma2);
+plot(x, fwhm, '--b');
+
+hold off;
+
+print('stellar-profiles', '-depsc');
