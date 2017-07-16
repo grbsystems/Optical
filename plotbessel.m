@@ -19,7 +19,7 @@
 r = 0:0.25:10;
 
 b1 = besselj(1,r);
-plot(r,b);
+plot(r,b1);
 hold on;
 ax=gca;
 

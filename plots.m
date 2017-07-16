@@ -31,7 +31,7 @@ f = figure();
 f.Position=[100 100 1000 800];
 
 subplot(1,2,1);
-plot(r, I);
+plot(x, z);
 ylabel('intensity')
 xlabel('arcseconds')
 
@@ -45,4 +45,4 @@ colormap summer
 
 print -depsc airy_bessel.eps;
 
-close();
+%close();
